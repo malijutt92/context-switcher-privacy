@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>Privacy Policy — Context Switcher</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #08090d;
+      --surface:  #0e1018;
+      --border:   #1c2035;
+      --accent:   #6366f1;
+      --text:     #f1f5f9;
+      --text-2:   #8892a8;
+      --success:  #10b981;
+      --radius:   12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .site-header .inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #6366f1, #818cf8);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 16px rgba(99,102,241,0.35);
+    }
+
+    .brand-icon svg { width: 16px; height: 16px; color: #fff; }
+
+    .brand-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-left: auto;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 56px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.2);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: var(--text-2);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-2);
+    }
+
+    .meta-item svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+
+    /* ── Summary cards ── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .summary-card .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .summary-card .icon svg { width: 18px; height: 18px; }
+    .icon-green { background: rgba(16,185,129,0.12); color: var(--success); }
+    .icon-indigo { background: rgba(99,102,241,0.12); color: var(--accent); }
+    .icon-red { background: rgba(244,63,94,0.12); color: #f43f5e; }
+
+    .summary-card h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .summary-card p {
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 52px;
+    }
+
+    .section-number {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section p {
+      color: var(--text-2);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── Table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .data-table th {
+      background: var(--surface);
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table td {
+      padding: 13px 16px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .data-table td:first-child {
+      font-weight: 600;
+      color: var(--text);
+      width: 35%;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    .tag-green { background: rgba(16,185,129,0.12); color: var(--success); }
+    .tag-red   { background: rgba(244,63,94,0.12);  color: #f43f5e; }
+    .tag-blue  { background: rgba(99,102,241,0.12); color: #818cf8; }
+
+    /* ── List ── */
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-2);
+    }
+
+    .check-list li svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .check-list.yes li svg { color: var(--success); }
+    .check-list.no  li svg { color: #f43f5e; }
+
+    /* ── Callout ── */
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+
+    .callout p {
+      font-size: 13.5px;
+      color: var(--text-2);
+      margin: 0;
+    }
+
+    .callout strong { color: var(--text); }
+
+    /* ── Contact box ── */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      margin-top: 56px;
+    }
+
+    .contact-box h2 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      font-size: 14px;
+      color: var(--text-2);
+      margin-bottom: 20px;
+    }
+
+    .contact-box a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #6366f1, #818cf8);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 8px;
+      transition: opacity 0.15s;
+    }
+
+    .contact-box a:hover { opacity: 0.88; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 80px;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--text-2);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 30px; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .data-table td:first-child { width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="inner">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+      </div>
+      <span class="brand-name">Context Switcher</span>
+      <span class="brand-sub">Privacy Policy</span>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-tag">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Privacy Policy
+      </div>
+      <h1>Your data stays<br/>on your device.</h1>
+      <p>Context Switcher is built with a simple principle: we never see your data, because we never receive it. Everything stays in your browser.</p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Last updated: May 2026
+        </div>
+        <div class="meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Effective: May 2026
+        </div>
+        <div class="meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Applies to: Chrome Extension
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="icon icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h3>No servers</h3>
+        <p>All your workspace data is stored locally in your browser. It never touches any server we own or operate.</p>
+      </div>
+      <div class="summary-card">
+        <div class="icon icon-indigo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+        </div>
+        <h3>No tracking</h3>
+        <p>Zero analytics, zero telemetry, zero fingerprinting. We have no idea how you use the extension.</p>
+      </div>
+      <div class="summary-card">
+        <div class="icon icon-red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+          </svg>
+        </div>
+        <h3>No passwords ever</h3>
+        <p>The extension explicitly skips all password fields, hidden inputs, and file inputs when capturing form data.</p>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section">
+      <span class="section-number">01</span>
+      <h2>What This Policy Covers</h2>
+      <p>This Privacy Policy describes how Context Switcher ("the extension", "we", "our") handles information when you use the Context Switcher Chrome extension. This policy applies to the extension only — not to any third-party websites or services that may be linked from store listings.</p>
+      <p>By installing and using Context Switcher, you agree to the practices described in this policy.</p>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section">
+      <span class="section-number">02</span>
+      <h2>What Data Is Stored</h2>
+      <p>Context Switcher stores two types of data, both exclusively on your device:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Where stored</th>
+            <th>Purpose</th>
+            <th>Shared?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tab URLs &amp; titles</td>
+            <td><span class="tag tag-blue">chrome.storage.local</span></td>
+            <td>Restore tabs when you thaw a workspace</td>
+            <td><span class="tag tag-green">Never</span></td>
+          </tr>
+          <tr>
+            <td>Favicon URLs</td>
+            <td><span class="tag tag-blue">chrome.storage.local</span></td>
+            <td>Display workspace previews in the popup</td>
+            <td><span class="tag tag-green">Never</span></td>
+          </tr>
+          <tr>
+            <td>Scroll positions</td>
+            <td><span class="tag tag-blue">chrome.storage.local</span></td>
+            <td>Restore exact scroll position on thaw</td>
+            <td><span class="tag tag-green">Never</span></td>
+          </tr>
+          <tr>
+            <td>Form field values</td>
+            <td><span class="tag tag-blue">chrome.storage.local</span></td>
+            <td>Preserve typed content across sessions</td>
+            <td><span class="tag tag-green">Never</span></td>
+          </tr>
+          <tr>
+            <td>Tab order &amp; pinned state</td>
+            <td><span class="tag tag-blue">chrome.storage.local</span></td>
+            <td>Restore window layout accurately</td>
+            <td><span class="tag tag-green">Never</span></td>
+          </tr>
+          <tr>
+            <td>Pro license key</td>
+            <td><span class="tag tag-green">chrome.storage.sync</span></td>
+            <td>Persist Pro status across your Chrome devices</td>
+            <td><span class="tag tag-red">Gumroad API only</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <p><strong>chrome.storage.local</strong> stores data on your device only. <strong>chrome.storage.sync</strong> stores data encrypted in your Google account's Chrome sync — the same place your Chrome bookmarks and settings are stored. Google's own privacy policy governs this storage.</p>
+      </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section">
+      <span class="section-number">03</span>
+      <h2>What Data Is Never Collected</h2>
+
+      <ul class="check-list no">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Passwords — all <code>type="password"</code> inputs are explicitly skipped
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Payment information or credit card data
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Browsing history or any data sent to a remote server
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Analytics, crash reports, or usage telemetry
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Your name, email address, or any personally identifiable information
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Hidden form fields or file upload inputs
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          Device identifiers or fingerprinting data
+        </li>
+      </ul>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section">
+      <span class="section-number">04</span>
+      <h2>Permissions Explained</h2>
+      <p>The extension requests the following Chrome permissions. Here is exactly why each one is needed:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Why it is required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>tabs</td>
+            <td>Read open tabs to capture their URLs, titles, and order during Freeze; create tabs when restoring a workspace during Thaw.</td>
+          </tr>
+          <tr>
+            <td>storage</td>
+            <td>Save workspace data to chrome.storage.local and save the Pro license key to chrome.storage.sync.</td>
+          </tr>
+          <tr>
+            <td>scripting</td>
+            <td>Inject a small script into open tabs to read scroll position (window.scrollX, window.scrollY) during Freeze, and to restore scroll position after Thaw.</td>
+          </tr>
+          <tr>
+            <td>tabGroups</td>
+            <td>Reserved for a future update that will preserve Chrome tab groups. Not actively used in the current version.</td>
+          </tr>
+          <tr>
+            <td>host_permissions: &lt;all_urls&gt;</td>
+            <td>Required so the scripting permission can inject into any webpage the user has open. Without this, scroll capture would fail on most sites. No data from any page is sent anywhere.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="section">
+      <span class="section-number">05</span>
+      <h2>License Verification (Pro Users Only)</h2>
+      <p>If you purchase a Pro license, the extension makes a single HTTPS request to verify your key:</p>
+
+      <div class="callout">
+        <p><strong>Endpoint:</strong> <code>https://api.gumroad.com/v2/licenses/verify</code><br/>
+        <strong>Data sent:</strong> Your license key and the product ID (<code>lmxuh</code>)<br/>
+        <strong>Data received:</strong> Whether the key is valid (true/false)<br/>
+        <strong>Frequency:</strong> Once on activation, then silently every 7 days<br/>
+        <strong>Offline behaviour:</strong> If the request fails due to no internet, your Pro status is preserved</p>
+      </div>
+
+      <p>No tab data, no URLs, no browsing history, and no personal information is ever included in this request. Gumroad's own privacy policy governs their handling of the license key. If you are not a Pro user, this request is never made.</p>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="section">
+      <span class="section-number">06</span>
+      <h2>Data Retention and Deletion</h2>
+      <p>All workspace data persists until you explicitly delete it. You are in full control:</p>
+
+      <ul class="check-list yes">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Delete individual workspaces using the ✕ button in the popup
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Remove all data by uninstalling the extension from Chrome
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Clear storage manually via Chrome Settings → Privacy → Clear browsing data → Hosted app data
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Pro license key can be removed by revoking it inside the extension
+        </li>
+      </ul>
+
+      <p>We do not have access to your data and therefore cannot delete it on your behalf. Deletion is entirely within your control.</p>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="section">
+      <span class="section-number">07</span>
+      <h2>Third-Party Services</h2>
+      <p>The extension interacts with the following external services under limited, specific conditions:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>When used</th>
+            <th>Data shared</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gumroad API</td>
+            <td>Pro license verification only</td>
+            <td>License key + product ID only</td>
+          </tr>
+          <tr>
+            <td>Google Chrome Sync</td>
+            <td>Syncing Pro license key across your devices</td>
+            <td>License key (encrypted by Chrome)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>No other third-party services are used. There are no advertising networks, analytics providers, or data brokers involved.</p>
+    </div>
+
+    <!-- Section 8 -->
+    <div class="section">
+      <span class="section-number">08</span>
+      <h2>Children's Privacy</h2>
+      <p>Context Switcher is a general-purpose productivity tool not directed at children under 13. We do not knowingly collect any information from children. If you believe a child has used the extension in a way that raises privacy concerns, please contact us and we will address it promptly.</p>
+    </div>
+
+    <!-- Section 9 -->
+    <div class="section">
+      <span class="section-number">09</span>
+      <h2>Changes to This Policy</h2>
+      <p>If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page. For significant changes, we will also note them in the Chrome Web Store update description.</p>
+      <p>Continued use of the extension after changes are posted constitutes acceptance of the updated policy. We encourage you to review this page periodically.</p>
+    </div>
+
+    <!-- Section 10 -->
+    <div class="section">
+      <span class="section-number">10</span>
+      <h2>Your Rights</h2>
+      <p>Because Context Switcher does not collect personal data on any server we control, most data rights (access, deletion, portability) are exercised entirely by you within your own browser. Specifically:</p>
+      <ul class="check-list yes">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <strong>Right to access:</strong> All stored data is visible inside the extension popup
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <strong>Right to delete:</strong> Delete workspaces at any time or uninstall the extension
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <strong>Right to portability:</strong> Your data is in your browser — it belongs to you
+        </li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-box">
+      <h2>Questions or concerns?</h2>
+      <p>If you have any questions about this privacy policy or how Context Switcher handles your data, we're happy to help.</p>
+      <a href="mailto:your@email.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+        </svg>
+        Contact Us
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Context Switcher &nbsp;·&nbsp; <a href="https://malijutt.gumroad.com/l/lmxuh">Get Pro</a> &nbsp;·&nbsp; <a href="https://chromewebstore.google.com">Chrome Web Store</a></p>
+  </footer>
+
+</body>
+</html>
